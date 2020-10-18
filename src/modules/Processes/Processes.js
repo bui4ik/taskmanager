@@ -1,7 +1,12 @@
 import React from 'react'
+import DefaultLayout from 'layouts/DefaultLayout/DefaultLayout'
 
 const Processes = () => {
-  return <div>Processes</div>
+  return (
+    <DefaultLayout>
+      <div>Processes</div>
+    </DefaultLayout>
+  )
 }
 
 export default Processes
