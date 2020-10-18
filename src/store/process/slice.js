@@ -6,6 +6,7 @@ const slice = createSlice({
     processes: [],
     isProcessesLoading: false,
     isProcessCreating: false,
+    isProcessDeletingId: '',
   },
   reducers: {
     getProcessesPending: (state) => {
@@ -28,6 +29,16 @@ const slice = createSlice({
     createProcessRejected: (state) => {
       state.isProcessCreating = false
     },
+    deleteProcessPending: (state, { payload }) => {
+      state.isProcessDeletingId = payload.id
+    },
+    deleteProcessFullfield: (state, { payload }) => {
+      state.processes = state.processes.filter(({ _id }) => _id !== payload.id)
+      state.isProcessDeletingId = ''
+    },
+    deleteProcessRejected: (state) => {
+      state.isProcessDeleting = ''
+    },
   },
 })
 
@@ -38,5 +49,8 @@ export const {
   createProcessPending,
   createProcessFullfield,
   createProcessRejected,
+  deleteProcessPending,
+  deleteProcessFullfield,
+  deleteProcessRejected,
 } = slice.actions
 export default slice.reducer

@@ -1,5 +1,5 @@
 import { takeLatest, put, all, call } from 'redux-saga/effects'
-import { processesGet, processesPost } from 'api/requests'
+import { processesGet, processesPost, processesDelete } from 'api/requests'
 import {
   getProcessesPending,
   getProcessesFullfield,
@@ -7,6 +7,9 @@ import {
   createProcessPending,
   createProcessFullfield,
   createProcessRejected,
+  deleteProcessPending,
+  deleteProcessFullfield,
+  deleteProcessRejected,
 } from './slice'
 
 function* getProcesses() {
@@ -27,9 +30,19 @@ function* createProcess() {
   }
 }
 
+function* deleteProcess({ payload: { id } }) {
+  try {
+    yield call(processesDelete, id)
+    yield put(deleteProcessFullfield({ id }))
+  } catch (e) {
+    yield put(deleteProcessRejected())
+  }
+}
+
 export default function* () {
   yield all([
     takeLatest(getProcessesPending.type, getProcesses),
     takeLatest(createProcessPending.type, createProcess),
+    takeLatest(deleteProcessPending.type, deleteProcess),
   ])
 }
