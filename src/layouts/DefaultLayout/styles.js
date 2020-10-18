@@ -9,4 +9,5 @@ export const StyledLayout = styled(Layout)`
 
 export const StyledContent = styled(Content)`
   padding: 50px;
+  display: flex;
 `

@@ -5,6 +5,7 @@ const slice = createSlice({
   initialState: {
     processes: [],
     isProcessesLoading: false,
+    isProcessCreating: false,
   },
   reducers: {
     getProcessesPending: (state) => {
@@ -17,8 +18,25 @@ const slice = createSlice({
     getProcessesRejected: (state) => {
       state.isProcessesLoading = false
     },
+    createProcessPending: (state) => {
+      state.isProcessCreating = true
+    },
+    createProcessFullfield: (state, { payload }) => {
+      state.isProcessCreating = false
+      state.processes.unshift(payload.process)
+    },
+    createProcessRejected: (state) => {
+      state.isProcessCreating = false
+    },
   },
 })
 
-export const { getProcessesPending, getProcessesFullfield, getProcessesRejected } = slice.actions
+export const {
+  getProcessesPending,
+  getProcessesFullfield,
+  getProcessesRejected,
+  createProcessPending,
+  createProcessFullfield,
+  createProcessRejected,
+} = slice.actions
 export default slice.reducer
