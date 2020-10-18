@@ -1,11 +1,4 @@
 import styled from 'styled-components'
-import { Card } from 'antd'
-
-export const StyledCard = styled(Card)`
-  &:not(:last-child) {
-    margin-bottom: 10px;
-  }
-`
 
 export const Box = styled.div`
   display: flex;

@@ -1,40 +1,23 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Button } from 'antd'
-import { processesSelector, isProcessDeletingIdSelector } from 'store/process/selectors'
-import { deleteProcessPending } from 'store/process/slice'
-import { StyledCard, Box, Title, TitleValue, ButtonBox } from './styles'
+import { useSelector } from 'react-redux'
+import { Collapse } from 'antd'
+import { processesSelector } from 'store/process/selectors'
+import Tasks from 'components/molecules/Tasks/Tasks'
+import ProcessHeader from 'components/molecules/ProcessHeader/ProcessHeader'
+
+const { Panel } = Collapse
 
 const ProcessesList = () => {
-  const dispatch = useDispatch()
   const processes = useSelector(processesSelector)
-  const isLoadingId = useSelector(isProcessDeletingIdSelector)
-
-  const onClick = (id) => {
-    dispatch(deleteProcessPending({ id }))
-  }
 
   return (
-    <div>
-      {processes.map(({ _id, name }) => (
-        <StyledCard key={_id}>
-          <Box>
-            <Title>Title: </Title>
-            <TitleValue>{name}</TitleValue>
-            <ButtonBox>
-              <Button
-                type="danger"
-                onClick={() => onClick(_id)}
-                size="small"
-                loading={_id === isLoadingId}
-              >
-                Delete process
-              </Button>
-            </ButtonBox>
-          </Box>
-        </StyledCard>
+    <Collapse defaultActiveKey={['1']}>
+      {processes.map((process) => (
+        <Panel key={process._id} header={<ProcessHeader process={process} />}>
+          <Tasks jobs={process.jobs} />
+        </Panel>
       ))}
-    </div>
+    </Collapse>
   )
 }
 
