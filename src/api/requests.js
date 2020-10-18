@@ -2,7 +2,7 @@ import endpoints from 'config/endpoints'
 import { axiosInstance } from './axiosInstance'
 
 export const processesGet = async (id) => {
-  return axiosInstance.get(`${endpoints.process}${id}`)
+  return axiosInstance.get(`${endpoints.process}${id !== undefined ? id : ''}`)
 }
 
 export const processesPost = async () => {
