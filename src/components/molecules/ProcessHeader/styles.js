@@ -15,7 +15,7 @@ export const TitleValue = styled.div`
   font-style: italic;
 `
 
-export const Date = styled.div`
+export const Text = styled.div`
   padding-right: 15px;
 `
 

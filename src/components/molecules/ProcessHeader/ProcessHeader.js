@@ -5,9 +5,9 @@ import dayjs from 'dayjs'
 import { isProcessDeletingIdSelector } from 'store/process/selectors'
 import { deleteProcessPending } from 'store/process/slice'
 import StatusTag from 'components/atoms/StatusTag/StatusTag'
-import { Box, Title, TitleValue, Date, ButtonBox } from './styles'
+import { Box, Title, TitleValue, Text, ButtonBox } from './styles'
 
-const ProcessHeader = ({ process: { _id, name, jobs, startTime } }) => {
+const ProcessHeader = ({ process: { _id, name, jobs, startTime, jobsCount } }) => {
   const dispatch = useDispatch()
   const isLoadingId = useSelector(isProcessDeletingIdSelector)
 
@@ -31,7 +31,8 @@ const ProcessHeader = ({ process: { _id, name, jobs, startTime } }) => {
     <Box>
       <Title>Title: </Title>
       <TitleValue>{name}</TitleValue>
-      <Date>{dayjs(startTime).format('MM-DD-HH:mm:ss')}</Date>
+      <Text>{dayjs(startTime).format('MM-DD-HH:mm:ss')}</Text>
+      <Text>Jobs count: {jobsCount}</Text>
       <StatusTag status={getStatus()} />
       <ButtonBox>
         <Button type="danger" onClick={onClick} size="small" loading={_id === isLoadingId}>

@@ -12,6 +12,7 @@
     "prettier": "prettier --write -l \"src/**/*.{js,jsx}\""
   },
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "@reduxjs/toolkit": "^1.4.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",

@@ -7,6 +7,11 @@ const slice = createSlice({
     isProcessesLoading: false,
     isProcessCreating: false,
     isProcessDeletingId: '',
+    sorts: {
+      nameSort: 'noSort',
+      dateSort: 'noSort',
+      jobsSort: 'noSort',
+    },
   },
   reducers: {
     getProcessesPending: (state) => {
@@ -39,6 +44,9 @@ const slice = createSlice({
     deleteProcessRejected: (state) => {
       state.isProcessDeleting = ''
     },
+    setSort: (state, { payload }) => {
+      state.sorts[payload.type] = payload.value
+    },
   },
 })
 
@@ -52,5 +60,6 @@ export const {
   deleteProcessPending,
   deleteProcessFullfield,
   deleteProcessRejected,
+  setSort,
 } = slice.actions
 export default slice.reducer
