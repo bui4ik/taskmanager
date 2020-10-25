@@ -1,9 +1,14 @@
 import styled from 'styled-components'
+import { Select } from 'antd'
 
 export const Box = styled.div`
   display: flex;
   padding-bottom: 20px;
   align-items: center;
+`
+
+export const StyledSelect = styled(Select)`
+  width: 150px;
 `
 
 export const ButtonWrapper = styled.div`

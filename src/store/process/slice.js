@@ -12,6 +12,7 @@ const slice = createSlice({
       dateSort: 'noSort',
       jobsSort: 'noSort',
     },
+    jobsSearch: '',
   },
   reducers: {
     getProcessesPending: (state) => {
@@ -47,6 +48,9 @@ const slice = createSlice({
     setSort: (state, { payload }) => {
       state.sorts[payload.type] = payload.value
     },
+    setJobsSearch: (state, { payload }) => {
+      state.jobsSearch = payload.value
+    },
   },
 })
 
@@ -61,5 +65,6 @@ export const {
   deleteProcessFullfield,
   deleteProcessRejected,
   setSort,
+  setJobsSearch,
 } = slice.actions
 export default slice.reducer

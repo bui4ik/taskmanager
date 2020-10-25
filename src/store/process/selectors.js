@@ -15,7 +15,27 @@ export const processesSelector = ({ process }) => {
 
   return process.processes
 }
+
 export const isProcessesLoadingSelector = ({ process }) => process.isProcessesLoading
+
 export const isProcessCreatingSelector = ({ process }) => process.isProcessCreating
+
 export const isProcessDeletingIdSelector = ({ process }) => process.isProcessDeletingId
+
 export const sortsSelector = ({ process }) => process.sorts
+
+export const jobsSearchSelector = ({ process }) => {
+  if (process.jobsSearch) {
+    const result = []
+    process.processes.map(({ jobs }) => {
+      return jobs.map(({ name }) => {
+        if (name.includes(process.jobsSearch)) {
+          result.push({ name })
+        }
+        return name
+      })
+    })
+    return result
+  }
+  return []
+}
