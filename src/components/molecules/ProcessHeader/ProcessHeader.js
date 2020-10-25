@@ -1,12 +1,13 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button } from 'antd'
+import dayjs from 'dayjs'
 import { isProcessDeletingIdSelector } from 'store/process/selectors'
 import { deleteProcessPending } from 'store/process/slice'
 import StatusTag from 'components/atoms/StatusTag/StatusTag'
-import { Box, ButtonBox, Title, TitleValue } from './styles'
+import { Box, Title, TitleValue, Date, ButtonBox } from './styles'
 
-const ProcessHeader = ({ process: { _id, name, jobs } }) => {
+const ProcessHeader = ({ process: { _id, name, jobs, startTime } }) => {
   const dispatch = useDispatch()
   const isLoadingId = useSelector(isProcessDeletingIdSelector)
 
@@ -30,6 +31,7 @@ const ProcessHeader = ({ process: { _id, name, jobs } }) => {
     <Box>
       <Title>Title: </Title>
       <TitleValue>{name}</TitleValue>
+      <Date>{dayjs(startTime).format('MM-DD-HH:mm:ss')}</Date>
       <StatusTag status={getStatus()} />
       <ButtonBox>
         <Button type="danger" onClick={onClick} size="small" loading={_id === isLoadingId}>

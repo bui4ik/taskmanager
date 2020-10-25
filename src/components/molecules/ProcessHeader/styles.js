@@ -15,6 +15,10 @@ export const TitleValue = styled.div`
   font-style: italic;
 `
 
+export const Date = styled.div`
+  padding-right: 15px;
+`
+
 export const ButtonBox = styled.div`
   margin-left: auto;
   margin-right: 0;
