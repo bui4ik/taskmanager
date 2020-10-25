@@ -1,18 +1,15 @@
 import React from 'react'
-import { Box, Task, Title, StyledTag } from './styles'
-
-const tagsColors = {
-  successed: 'green',
-  running: 'blue',
-  failed: 'red',
-}
+import StatusTag from 'components/atoms/StatusTag/StatusTag'
+import { Box, Task, Title, TagBox } from './styles'
 
 const Tasks = ({ jobs }) => (
   <Box>
     {jobs.map(({ _id, name, status }) => (
       <Task key={_id}>
         <Title>{name}</Title>
-        <StyledTag color={tagsColors[status]}>{status}</StyledTag>
+        <TagBox>
+          <StatusTag status={status} />
+        </TagBox>
       </Task>
     ))}
   </Box>

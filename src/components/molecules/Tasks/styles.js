@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Tag } from 'antd'
 
 export const Box = styled.div`
   display: flex;
@@ -19,9 +18,7 @@ export const Title = styled.div`
   font-weight: 600;
 `
 
-export const StyledTag = styled(Tag)`
+export const TagBox = styled.div`
   margin-left: auto;
   margin-right: 0;
-  width: 70px;
-  text-align: center;
 `

@@ -11,6 +11,7 @@ export const Title = styled.div`
 `
 
 export const TitleValue = styled.div`
+  width: 30%;
   font-style: italic;
 `
 
